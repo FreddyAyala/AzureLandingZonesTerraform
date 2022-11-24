@@ -18,23 +18,21 @@ variable "subscription_id_connectivity" {
   description = "Sets the Subscription ID to use for Connectivity resources."
 }
 
-
-
 variable "default_location" {
   type        = string
-  default     = "eastus"
+  default     = "westeurope"
   description = "Sets the default location for resources, including references to location within Policy templates."
 }
 
 variable "deploy_corp_landing_zones" {
   type        = bool
-  default     = false
+  default     = true
   description = "If set to true, will deploy the \"Corp\" landing zones in addition to any core and custom landing zones."
 }
 
 variable "deploy_online_landing_zones" {
   type        = bool
-  default     = false
+  default     = true
   description = "If set to true, will deploy the \"Online\" landing zones in addition to any core and custom landing zones."
 }
 
@@ -44,20 +42,22 @@ variable "deploy_sap_landing_zones" {
   description = "If set to true, will deploy the \"SAP\" landing zones in addition to any core and custom landing zones."
 }
 
-variable "deploy_management_resources" {
-  type        = bool
-  default     = false
-  description = "If set to true, will deploy the management resources in the Subscription assigned as the Management landing zone."
+variable "deploy_connectivity_resources" {
+  type    = bool
+  default = true
 }
 
+variable "deploy_management_resources" {
+  type        = bool
+  default     = true
+  description = "If set to true, will deploy the management resources in the Subscription assigned as the Management landing zone."
+}
 
 variable "security_contact_email_address" {
   type        = string
   default     = "security.contact@replace_me"
   description = "Sets the security contact email address used when configuring Azure Security Center."
 }
-
-
 
 # Use variables to customize the deployment
 
@@ -71,14 +71,9 @@ variable "root_name" {
   default = "My Organization"
 }
 
-variable "deploy_connectivity_resources" {
-  type    = bool
-  default = true
-}
-
 variable "connectivity_resources_location" {
   type    = string
-  default = "uksouth"
+  default = "westeurope"
 }
 
 variable "connectivity_resources_tags" {
