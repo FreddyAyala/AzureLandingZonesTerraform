@@ -10,6 +10,8 @@ module "enterprise_scale" {
     azurerm.connectivity = azurerm.connectivity
   }
 
+  # library_path = format("%s/lib", path.root)
+
   # Base module configuration settings.
   root_parent_id   = data.azurerm_client_config.current.tenant_id
   root_id          = local.root_id

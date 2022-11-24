@@ -1,0 +1,16 @@
+{
+  "extend_es_root": {
+    "policy_assignments": ["MyOrgA-DenySubWoNsg-Vnet"],
+    "policy_definitions": ["MyOrgD-DenySubWoNsg-Vnet"],
+    "policy_set_definitions": [],
+    "role_definitions": [],
+    "archetype_config": {
+      "parameters": {
+        "MyOrgA-DenySubWoNsg-Vnet": {
+          "effect": "Deny"
+        }
+      },
+      "access_control": {}
+    }
+  }
+}

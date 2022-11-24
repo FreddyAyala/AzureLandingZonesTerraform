@@ -1,0 +1,51 @@
+{
+  "name": "MyOrgD-DenySubWoNsg-Vnet",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "apiVersion": "2019-09-01",
+  "properties": {
+    "displayName": "MyOrgD-DenySubWoNsg-Vnet: Policy Definition",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "This policy denies the creation of a subnet without a Network Security Group. NSG help to protect traffic across subnet-level.",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Network"
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "allowedValues": ["Audit", "Deny"],
+        "defaultValue": "Deny"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/virtualNetworks/subnets"
+          },
+          {
+            "field": "Microsoft.Network/virtualNetworks/subnets/delegations[*].name",
+            "notContains": "netapp"
+          },
+          {
+            "field": "name",
+            "notIn": ["GatewaySubnet"]
+          },
+          {
+            "field": "Microsoft.Network/virtualNetworks/subnets/networkSecurityGroup.id",
+            "exists": "false"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    }
+  }
+}
