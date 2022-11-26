@@ -1,6 +1,6 @@
 root_id                        = "tf-cafes"
 root_name                      = "Learn Terraform ES"
-default_location               = "eastus"
+default_location               = "westeurope"
 deploy_corp_landing_zones      = true
 deploy_online_landing_zones    = true
 deploy_sap_landing_zones       = false

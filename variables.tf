@@ -6,6 +6,8 @@
 # subscription_id_connectivity, these are all given values via the included 
 # .tfvars files.
 
+# Global variables
+
 variable "subscription_id_management" {
   type        = string
   default     = ""
@@ -22,6 +24,18 @@ variable "default_location" {
   type        = string
   default     = "westeurope"
   description = "Sets the default location for resources, including references to location within Policy templates."
+}
+
+# Archetype-related variables
+
+variable "root_id" {
+  type    = string
+  default = "myorg"
+}
+
+variable "root_name" {
+  type    = string
+  default = "My Organization"
 }
 
 variable "deploy_corp_landing_zones" {
@@ -59,17 +73,7 @@ variable "security_contact_email_address" {
   description = "Sets the security contact email address used when configuring Azure Security Center."
 }
 
-# Use variables to customize the deployment
-
-variable "root_id" {
-  type    = string
-  default = "myorg"
-}
-
-variable "root_name" {
-  type    = string
-  default = "My Organization"
-}
+# Connectivity-related variables
 
 variable "connectivity_resources_location" {
   type    = string
@@ -80,5 +84,24 @@ variable "connectivity_resources_tags" {
   type = map(string)
   default = {
     demo_type = "deploy_connectivity_resources_custom"
+  }
+}
+
+# Management-related variables
+
+variable "log_retention_in_days" {
+  type    = number
+  default = 90
+}
+
+variable "management_resources_location" {
+  type    = string
+  default = "westeurope"
+}
+
+variable "management_resources_tags" {
+  type = map(string)
+  default = {
+    demo_type = "deploy_management_resources_custom"
   }
 }
