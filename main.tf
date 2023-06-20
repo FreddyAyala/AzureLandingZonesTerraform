@@ -2,7 +2,7 @@
 # Enterprise-scale and provide a base configuration.
 module "enterprise_scale" {
   source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "~> 2.4.1"
+  version = "~> 4.0.0"
 
   providers = {
     azurerm              = azurerm
@@ -10,7 +10,7 @@ module "enterprise_scale" {
     azurerm.connectivity = azurerm.connectivity
   }
 
-  # library_path = format("%s/lib", path.root)
+  library_path = format("%s/lib", path.root)
 
   # Base module configuration settings.
   root_parent_id   = data.azurerm_client_config.current.tenant_id
